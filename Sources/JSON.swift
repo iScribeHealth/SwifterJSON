@@ -424,8 +424,12 @@ public extension JSON {
             self = .null
         case let intValue as Int:
             self = .int(intValue)
+        case let integerValue as any BinaryInteger:
+            self = .int(Int(integerValue))
         case let doubleValue as Double:
             self = .double(doubleValue)
+        case let floatingPointValue as any BinaryFloatingPoint:
+            self = .double(Double(floatingPointValue))
         case let boolValue as Bool:
             self = .bool(boolValue)
         case let stringValue as String:
